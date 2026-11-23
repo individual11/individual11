@@ -1,0 +1,33 @@
+name: header
+
+# Redraws the profile header from the last year of contributions and puts it on the
+# "output" branch, so main only ever changes by hand.
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - run: node scripts/build.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Publish to the output branch
+        working-directory: dist
+        env:
+          REMOTE: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+        run: |
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -qm "Header for $(date -u +%F)"
+          git push -qf "$REMOTE" HEAD:output
