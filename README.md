@@ -15,7 +15,7 @@
 
 ### `whoami()`
 
-I co-founded Buddy and ran technology there from 2017 to 2026. That meant building the team, the platform and ION, a data format that once took an insurance product live in 18 hours. Before that I was a creative technologist at The Martin Agency, where I started the Martin Lab.
+I co-founded Buddy and ran technology there from 2017 to 2026. That meant building the team, the platform, and ION, a data format that once took an insurance product live in 18 hours. Before that I was an ACD, Creative Technologist, and copywriter at The Martin Agency, where I started the Martin Lab.
 
 ### `ls ./projects`
 
